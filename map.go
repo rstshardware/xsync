@@ -267,11 +267,11 @@ func (e *entry[V]) tryLoadOrStore(i V) (actual V, loaded, ok bool) {
 // LoadAndDelete deletes the value for a key, returning the previous value if any.
 // The loaded result reports whether the key was present.
 func (m *MapOf[K, V]) LoadAndDelete(key K) (value V, loaded bool) {
-	read, _ := m.read.Load().(readOnly)
+	read, _ := m.read.Load().(readOnly[K, V])
 	e, ok := read.m[key]
 	if !ok && read.amended {
 		m.mu.Lock()
-		read, _ = m.read.Load().(readOnly)
+		read, _ = m.read.Load().(readOnly[K, V])
 		e, ok = read.m[key]
 		if !ok && read.amended {
 			e, ok = m.dirty[key]
