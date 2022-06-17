@@ -294,14 +294,14 @@ func (m *MapOf[K, V]) Delete(key K) {
 	m.LoadAndDelete(key)
 }
 
-func (e *entry[V]) delete() (hadValue bool) {
+func (e *entry[V]) delete() (value V, ok bool) {
 	for {
 		p := atomic.LoadPointer(&e.p)
 		if p == nil || p == expunged {
-			return false
+			return nil, false
 		}
 		if atomic.CompareAndSwapPointer(&e.p, p, nil) {
-			return true
+			return *(*V)(p), true
 		}
 	}
 }
