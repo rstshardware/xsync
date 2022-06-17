@@ -286,7 +286,7 @@ func (m *MapOf[K, V]) LoadAndDelete(key K) (value V, loaded bool) {
 	if ok {
 		return e.delete()
 	}
-	return nil, false
+	return value, false
 }
 
 // Delete deletes the value for a key.
