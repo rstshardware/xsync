@@ -10,7 +10,7 @@ import (
 	"sync"
 	"testing"
 
-	generic_sync "github.com/SaveTheRbtz/generic-sync-map-go"
+	generic_sync "github.com/rstshardware/xsync"
 )
 
 func TestConcurrentRange(t *testing.T) {
