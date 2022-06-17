@@ -298,7 +298,7 @@ func (e *entry[V]) delete() (value V, ok bool) {
 	for {
 		p := atomic.LoadPointer(&e.p)
 		if p == nil || p == expunged {
-			return nil, false
+			return value, false
 		}
 		if atomic.CompareAndSwapPointer(&e.p, p, nil) {
 			return *(*V)(p), true
