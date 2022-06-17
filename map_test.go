@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package generic_sync_test
+package xsync_test
 
 import (
 	"math/rand"
@@ -10,13 +10,13 @@ import (
 	"sync"
 	"testing"
 
-	generic_sync "github.com/rstshardware/xsync"
+	"github.com/rstshardware/xsync"
 )
 
 func TestConcurrentRange(t *testing.T) {
 	const mapSize = 1 << 10
 
-	m := new(generic_sync.MapOf[int64, int64])
+	m := new(xsync.MapOf[int64, int64])
 	for n := int64(1); n <= mapSize; n++ {
 		m.Store(n, int64(n))
 	}
