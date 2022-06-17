@@ -1,3 +1,3 @@
-module github.com/SaveTheRbtz/generic-sync-map-go
+module github.com/rstshardware/xsync
 
 go 1.18
